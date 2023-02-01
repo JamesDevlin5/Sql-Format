@@ -1,8 +1,6 @@
 # SQL Formatter
 
-[SQL Keywords](https://www.w3schools.com/sql/sql_ref_keywords.asp)
-
-Will format all keywords and aggregate functions to be fully upper case.
+Will format all keywords, aggregate functions and reserved words to be fully upper case.
 
 ## Dependencies
 
