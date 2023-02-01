@@ -11,7 +11,7 @@ verbose = False
 t_ignore = ""
 
 t_DELIM = r"[ \t;(),]+"
-t_OPERATOR = r"[-!@#$%^&*+=~<>./?|]+"
+t_OPERATOR = r"[-!@#$%^&*+=~<>./?|~]+"
 t_NUMBER = r"\d+"
 t_STRING = r"'.*'"
 
@@ -857,18 +857,14 @@ target_words = frozenset((
 ))
 
 
-def fix_sym(sym):
-    if sym.upper() in target_words and not sym.isupper():
-        new_sym = sym.upper()
-        if verbose:
-            print(f"changing: {sym} -> {new_sym}")
-        return new_sym
-    return sym
-
-
 def t_SYMBOL(t):
     r"[a-zA-Z_]+"
-    t.value = fix_sym(t.value)
+    sym = t.value
+    new_sym = sym.upper()
+    if new_sym in target_words and not sym.isupper():
+        if verbose:
+            print(f"changing: {sym} -> {new_sym}")
+        t.value = new_sym
     return t
 
 
@@ -879,9 +875,12 @@ t_OTHER = r"."
 def mk_parser():
     parser = argparse.ArgumentParser(
         description="SQL Text Formatter (case-corrector)")
-    parser.add_argument("filename", metavar="SqlFile", type=argparse.FileType(
-        'r'), help="The source file to format")
-    parser.add_argument("-v", "--verbose", action="store_true",
+    parser.add_argument("filename",
+                        metavar="SqlFile",
+                        type=argparse.FileType('r'),
+                        help="The source file to format")
+    parser.add_argument("-v", "--verbose",
+                        action="store_true",
                         help="Display extra information")
     return parser
 
