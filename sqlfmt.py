@@ -27,7 +27,7 @@ def t_error(t):
     ...
 
 
-target_words = (
+target_words = frozenset((
     "A",
     "ABORT",
     "ABS",
@@ -78,7 +78,7 @@ target_words = (
     "BIT_LENGTH",
     "BITVAR",
     "BLOB",
-    "BOOL",
+"BOOL",
     "BOOLEAN",
     "BOTH",
     "BREADTH",
@@ -854,7 +854,7 @@ target_words = (
     "YEAR_MONTH",
     "ZEROFILL",
     "ZONE",
-)
+))
 
 
 def fix_sym(sym):

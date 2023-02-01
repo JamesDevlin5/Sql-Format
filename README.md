@@ -48,5 +48,5 @@ All the tests can be run via: `pytest test_fmt.py`
 ## ToDo
 
 - Write to file *inplace*
-- Optimize string set-membership test
+- Separate verbose debug printing from desired output printing
 
