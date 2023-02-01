@@ -78,7 +78,7 @@ target_words = frozenset((
     "BIT_LENGTH",
     "BITVAR",
     "BLOB",
-"BOOL",
+    "BOOL",
     "BOOLEAN",
     "BOTH",
     "BREADTH",
