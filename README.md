@@ -43,7 +43,7 @@ Otherwise, python3 is the only requirement to run this program.
 PyTest is used as the testing library.
 Tests are defined in `test_fmt.py`.
 
-All the tests can be run via: `pytest test_fmt.py`
+All the tests can be run via: `pytest test_fmt.py` or by calling the makefile recipe, `make test`.
 
 ## ToDo
 
