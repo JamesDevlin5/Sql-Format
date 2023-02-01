@@ -49,4 +49,5 @@ All the tests can be run via: `pytest test_fmt.py`
 
 - Write to file *inplace*
 - Separate verbose debug printing from desired output printing
+- Ignore contents of comments
 
