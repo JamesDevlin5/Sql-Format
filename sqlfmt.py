@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import sys
 from lex import lex
 
 tokens = ("COMMENT", "DELIM", "OPERATOR",
@@ -863,12 +864,12 @@ def t_SYMBOL(t):
     new_sym = sym.upper()
     if new_sym in target_words and not sym.isupper():
         if verbose:
-            print(f"changing: {sym} -> {new_sym}")
+            print(f"(line {t.lineno}) changing: {sym} -> {new_sym}", file=sys.stderr)
         t.value = new_sym
     return t
 
 
-t_COMMENT = r"--.*$|\\\*(.|\n)*?\*\\"
+t_COMMENT = r"--.*|\\\*(.|\n)*?\*\\"
 t_OTHER = r"."
 
 
