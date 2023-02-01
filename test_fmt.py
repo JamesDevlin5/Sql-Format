@@ -141,3 +141,35 @@ def test_hard1():
         employee.id ASC,
         call.start_time ASC;
     """
+
+
+def test_comments1():
+    data = """
+    -- select * from test where there is lowercase
+    -- don't select from comments having group by
+    -- ignore me
+    """
+    assert lex_str(data) == """
+    -- select * from test where there is lowercase
+    -- don't select from comments having group by
+    -- ignore me
+    """
+
+
+def test_comments2():
+    data = """
+    select * from tbl;
+    /*
+     * select *
+     * from tbl
+     * having productID < 200;
+     */
+    """
+    assert lex_str(data) == """
+    SELECT * FROM tbl;
+    /*
+     * select *
+     * from tbl
+     * having productID < 200;
+     */
+    """
