@@ -2,6 +2,20 @@
 
 Will format all keywords, aggregate functions and reserved words to be fully upper case.
 
+## Example
+
+```sql
+select * from tbl
+where productID is not null;
+```
+
+becomes
+
+```sql
+SELECT * FROM tbl
+WHERE productID IS NOT NULL;
+```
+
 ## Dependencies
 
 Relies on [Python Lex-Yacc](https://github.com/dabeaz/ply) to lex the input SQL file(s).
@@ -23,4 +37,16 @@ Finally, all the lexed tokens, among which are the modified tokens, are printed 
 The lexer library must be downloaded, but it's only one file.
 The makefile calls `curl` to handle this.
 Otherwise, python3 is the only requirement to run this program.
+
+## Testing
+
+PyTest is used as the testing library.
+Tests are defined in `test_fmt.py`.
+
+All the tests can be run via: `pytest test_fmt.py`
+
+## ToDo
+
+- Write to file *inplace*
+- Optimize string set-membership test
 
